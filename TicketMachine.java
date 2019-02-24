@@ -12,7 +12,7 @@
 public class TicketMachine
 {
     // The price of a ticket from this machine.
-    private int price;
+    private double price;
     // The amount of money entered by a customer so far.
     private int balance;
     // The total amount of money collected by this machine.
@@ -23,17 +23,32 @@ public class TicketMachine
      * Note that the price must be greater than zero, and there
      * are no checks to ensure this.
      */
-    public TicketMachine(int ticketCost)
+    public TicketMachine(double ticketCost)
     {
         price = ticketCost;
         balance = 0;
         total = 0;
     }
 
+    public void setPrice( double ticketCost)
+    {
+        price = ticketCost;
+    }
+ 
+    public void discount(double reduction)
+    {
+        price = price - ((reduction/100) * price);
+        /*double discount = (reduction/100) * price;
+        System.out.println(discount) ;
+        System.out.println(reduction/100) ;
+        System.out.println(reduction);
+        */
+    }
+    
     /**
      * Return the price of a ticket.
      */
-    public int getPrice()
+    public double getPrice()
     {
         return price;
     }
@@ -47,6 +62,14 @@ public class TicketMachine
         return balance;
     }
 
+    /**
+     * Return the amount of money in the total variable.
+     */
+    public int getTotal()
+    {
+        return total;
+    }
+    
     /**
      * Receive an amount of money in cents from a customer.
      */
